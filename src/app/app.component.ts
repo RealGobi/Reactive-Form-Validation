@@ -15,8 +15,15 @@ name = '';
 
 constructor(private fb: FormBuilder) {
   this.myForm = fb.group({
-    'name': [null, Validators.required]
-  })
+    name: [null, Validators.required],
+    description: [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
+    validate: ''
+  });
+}
+
+addPost(post) {
+  this.description = post.description;
+  this.name = post.name;
 }
 
 }
