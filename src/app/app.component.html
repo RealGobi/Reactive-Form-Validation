@@ -1,0 +1,28 @@
+<div *ngIf="!name; else forminfo">
+  <form [formGroup]="myForm" (ngSubmit)="addPost(myForm.value)">
+    <div class="form-container">
+      <div class="row columns">
+        <h1>Reactive Form</h1>
+        <label>Name
+          <input type="text" formControlName="name">
+        </label>
+        <label>Description
+          <textarea formControlName="description">
+        </label>
+        <label for="validate">Minimum of 3 Characters</label>
+        <input type="checkbox" name="validate" formControlName="validate" value="1">On
+        <input type="submit" value="Submit Form" class="button expanded" [disabled]="!myForm.valid">
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-template #forminfo>
+  <div class="form-container">
+    <div class="row columns">
+        <h1>{{ name }}</h1>
+
+        <p>{{ description }}</p>
+    </div>
+  </div>
+</ng-template>
