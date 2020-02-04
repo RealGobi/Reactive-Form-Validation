@@ -24,7 +24,7 @@ constructor(private fb: FormBuilder) {
 ngOnInit() {
   this.myForm.get('validate').valueChanges.subscribe(
     (validate) => {
-      if (validate === 1) {
+      if (validate) {
         this.myForm.get('name').setValidators([Validators.required, Validators.minLength(3)]);
         this.titleAlert = 'You need at least 3 characters.';
       } else {
