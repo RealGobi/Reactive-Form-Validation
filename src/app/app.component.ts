@@ -30,6 +30,7 @@ ngOnInit() {
       } else {
         this.myForm.get('name').setValidators(Validators.required);
       }
+      this.myForm.get('name').updateValueAndValidity();
     }
   );
 }
