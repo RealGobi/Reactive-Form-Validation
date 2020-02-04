@@ -5,10 +5,13 @@
         <h1>Reactive Form</h1>
         <label>Name
           <input type="text" formControlName="name">
+        <div class="alert" *ngIf="!myForm.controls['name'].valid && myForm.controls['name'].touched">{{ titleAlert }}</div>
         </label>
         <label>Description
-          <textarea formControlName="description">
+          <textarea formControlName="description"></textarea>
         </label>
+        <div class="alert" *ngIf="!myForm.controls['description'].valid && myForm.controls['description'].touched">You
+          must specify a description that's between 30 and 500 characters.</div>
         <label for="validate">Minimum of 3 Characters</label>
         <input type="checkbox" name="validate" formControlName="validate" value="1">On
         <input type="submit" value="Submit Form" class="button expanded" [disabled]="!myForm.valid">
@@ -20,9 +23,9 @@
 <ng-template #forminfo>
   <div class="form-container">
     <div class="row columns">
-        <h1>{{ name }}</h1>
+      <h1>{{ name }}</h1>
 
-        <p>{{ description }}</p>
+      <p>{{ description }}</p>
     </div>
   </div>
 </ng-template>
